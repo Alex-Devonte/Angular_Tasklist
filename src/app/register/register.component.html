@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    <form (ngSubmit)="register()" #registerForm="ngForm">
+      <!--First Name-->
+      <div class="form-group">
+        <label for="first-name">First Name</label>
+        <input type="text" class="form-control" name="first-name" id="first-name" placeholder="First Name"
+        [(ngModel)]="model.first_name" #firstName="ngModel" minlength="2" maxlength="20" pattern="^[a-zA-Z]+$" required>
+        <div *ngIf="firstName.errors?.required && firstName.touched" class="error-msg">First name is required</div>
+        <div *ngIf="firstName.errors?.minlength && firstName.touched" class="error-msg">First name must be at least 2 characters</div>
+        <div *ngIf="firstName.errors?.maxlength && firstName.touched" class="error-msg">First name must be no longer than 20 characters</div>
+        <div *ngIf="firstName.errors?.pattern && firstName.touched" class="error-msg">First name can only contain letters</div>
+      </div>
+      <!--Last Name-->
+      <div class="form-group">
+        <label for="last-name">Last Name</label>
+        <input type="text" class="form-control" name="last-name" id="last-name" placeholder="Last Name"
+        [(ngModel)]="model.last_name" #lastName="ngModel" minlength="2" maxlength="20" pattern="^[a-zA-Z]+$" required>
+        <div *ngIf="lastName.errors?.required && lastName.touched" class="error-msg">Last name is required</div>
+        <div *ngIf="lastName.errors?.minlength && lastName.touched" class="error-msg">Last name must be at least 2 characters</div>
+        <div *ngIf="lastName.errors?.maxlength && lastName.touched" class="error-msg">Last name must be no longer than 20 characters</div>
+        <div *ngIf="lastName.errors?.pattern && lastName.touched" class="error-msg">Last name can only contain letters</div>
+      </div>
+      <!--Username-->
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Username"
+        [(ngModel)]="model.username" #username="ngModel" minlength="4" maxlength="20" pattern="^[a-zA-Z0-9._-]+$" required>
+        <div *ngIf="username.errors?.required && username.touched" class="error-msg">Username is required</div>
+        <div *ngIf="username.errors?.minlength && username.touched" class="error-msg">Username must be at least 4 characters</div>
+        <div *ngIf="username.errors?.maxlength && username.touched" class="error-msg">Username must be no longer than 20 characters</div>
+        <div *ngIf="username.errors?.pattern && username.touched" class="error-msg">Username can only contain periods, hyphens and underscores'</div>
+        </div>
+      <!--Password-->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password"
+        [(ngModel)]="model.password" #password="ngModel" pattern="^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{5,}$" required>
+        <div *ngIf="password.errors?.required && password.touched" class="error-msg">Password is required</div>
+        <div *ngIf="password.errors?.pattern && password.touched" class="error-msg">Password must be a minimum of 5 characters and contain at least 1 digit and 1 letter</div>
+      </div>
+      <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary">Register</button>
+      <a routerLink="/login">Have an account? Login</a>
+    </form>
+  </div>
+</div>

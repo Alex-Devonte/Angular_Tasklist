@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+a {
+  margin: 15px;
+}
+
+.error-msg {
+  background-color: #f5dae2;
+  color: #ca0000;
+  padding: 5px;
+}

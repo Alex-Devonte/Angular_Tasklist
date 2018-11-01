@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+      <div class="form-group">
+        <!--Username-->
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Username"
+         [(ngModel)]="model.username" #username="ngModel" maxlength="20" pattern="^[a-zA-Z0-9._-]+$" required>
+        <div *ngIf="username.errors?.required && username.touched" class="error-msg">Username is required</div>
+        <div *ngIf="username.errors?.maxlength && username.touched" class="error-msg">Username must be no longer than 20 characters</div>
+        <div *ngIf="username.errors?.pattern && username.touched" class="error-msg">Username can only contain periods, hyphens and underscores'</div>
+      </div>
+      <!--Password-->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="model.password" #password="ngModel" required> 
+        <div *ngIf="password.errors?.required && password.touched" class="error-msg">Password is Required</div>
+      </div>
+      <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Login</button>
+      <a routerLink="/register">No Account? Register</a>
+    </form>
+  </div>
+</div>

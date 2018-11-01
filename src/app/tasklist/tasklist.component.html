@@ -1,0 +1,28 @@
+<header>
+  <div *ngIf="username?.length > 0" id="greeting">
+    <h5>Welcome, <span class="username">{{ username }}</span></h5>
+    <button class="btn" (click)="logout()">Logout</button>
+  </div>
+</header>
+<div class="row">
+  <div id="task-container" class="col-sm-6 offset-sm-3">
+    <form id="add-task-form" class="container-fluid">
+      <input #taskName type="text" name="task" class="form-control" placeholder="Enter task. . .">
+      <button (click)="addTask(taskName.value); taskName.value=''" id="add-task-btn" class="btn btn-outline-dark">Add Task</button>
+    </form>
+    <div class="col-xs-12">
+      <ul id="task-list">
+        <h3 *ngIf="tasks?.length == 0 else content">You have no tasks yet!</h3>
+        <ng-template #content>
+          <li *ngFor="let task of tasks" class="task">
+            {{ task?.task_name }}
+            <div class="modify-link-container">
+              <p class="modify-link edit">E</p>
+              <p class="modify-link delete" (click)="deleteTask(task)">D</p>
+            </div>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</div>
