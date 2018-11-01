@@ -1,13 +1,9 @@
 <?php
-  // $db_hostname = 'localhost';
-  // $db_database = 'tasklist';
-  // $db_username = 'root';
-  // $db_password = '';
+   $db_hostname = 'localhost';
+   $db_database = 'tasklist';
+   $db_username = 'root';
+   $db_password = '';
 
-  $db_hostname = 'localhost';
-  $db_database = 'alextayl_tasklist';
-  $db_username = 'alextayl_root';
-  $db_password = 'cka2e6E3!AH!S8';
 
   try
   {
