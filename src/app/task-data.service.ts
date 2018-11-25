@@ -8,6 +8,10 @@ import { catchError } from 'rxjs/operators';
 
 import { environment } from '../environments/environment';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable()
 export class TaskDataService {
   tasks: Task[];
@@ -24,6 +28,12 @@ export class TaskDataService {
 
   getUserID() {
     return JSON.parse(localStorage.getItem("token")).user_id;
+  }
+
+  getTask(id: string): Observable<Task> {
+    const params = new HttpParams()
+    .set('task_id', id);
+    return this.http.get<Task>(this.API_URL + "getTask.php", {params: params});
   }
 
   getTasks(user_id: string): Observable<Task[]> {
@@ -47,12 +57,14 @@ export class TaskDataService {
     );
   }
 
-  editTask() {
-    //TODO
+  updateTask(task: Task): Observable<Task> {
+    const params = new HttpParams()
+    .set('task_id', ""+task.task_id);
+    params.set("task_name", task.task_name);
+    return this.http.put<Task>(this.API_URL + "updateTask.php", JSON.stringify(task), httpOptions);
   }
 
   deleteTask(task_id: string): Observable<Task> {
-    console.log(task_id);
     const params = new HttpParams()
     .set('task_id', task_id);
     
