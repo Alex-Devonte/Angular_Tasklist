@@ -1,3 +1,8 @@
-<p>
-  task-detail works!
-</p>
+<h3>Edit Task</h3>
+<div id="edit-task-container" *ngIf="task">
+  <input [(ngModel)]="task.task_name"/>
+  <div id="btn-container">
+    <button class="btn" (click)="back()">Back</button>
+    <button class="btn" (click)="save()">Save</button>
+  </div>
+</div>
