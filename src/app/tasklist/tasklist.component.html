@@ -17,7 +17,7 @@
           <li *ngFor="let task of tasks" class="task">
             {{ task?.task_name }}
             <div class="modify-link-container">
-              <p class="modify-link edit">E</p>
+              <p routerLink="/task/{{task.task_id}}" class="modify-link edit">E</p>
               <p class="modify-link delete" (click)="deleteTask(task)">D</p>
             </div>
           </li>
