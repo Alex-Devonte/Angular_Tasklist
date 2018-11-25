@@ -1,0 +1,42 @@
+h3 {
+  text-align: center;
+}
+
+input {
+  padding: 5px;
+  width: 100%;
+}
+
+#btn-container {
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  margin: 10px 5px;
+  width: 45%;
+}
+
+@media screen and (min-width: 500px) {
+  #edit-task-container {
+    text-align: center;
+  }
+
+  input {
+    width: 50%;
+  }
+
+  .btn {
+    width: 25%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  input {
+    width: 30%;
+  }
+
+  .btn {
+    width: 15%;
+  }
+}
