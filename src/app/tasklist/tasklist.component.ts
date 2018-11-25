@@ -50,10 +50,6 @@ export class TasklistComponent implements OnInit {
     }
   }
 
-  editTask() {
-    //TODO
-  }
-
   deleteTask(task: Task) {
     //Return the tasks array the *deleted* task removed
     this.tasks = this.tasks.filter(t => t !== task);
