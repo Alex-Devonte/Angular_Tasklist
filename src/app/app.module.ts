@@ -7,6 +7,7 @@ import { AuthGuardService as AuthGuard, AuthGuardService } from './guards/auth-g
 import { AuthService } from './guards/auth.service';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { MessageService } from './message.service';
+import { TaskDataService} from './task-data.service';
 
 import { FormsModule }   from '@angular/forms';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "", redirectTo: "/login", pathMatch: "full" },
   { path: "tasklist", component: TasklistComponent, canActivate: [AuthGuard] },
+  { path: "task/:id", component: TaskDetailComponent},
   /*Wildcard route: intercept and handle invalid URLs
    *Should be last route*/
   { path: "**", component: PageNotFoundComponent }, 
@@ -55,7 +57,7 @@ const appRoutes: Routes = [
       {enableTracing: false } // Debugging purposes
     )
   ],
-  providers: [AuthGuardService, AuthService, JwtHelperService, MessageService],
+  providers: [AuthGuardService, AuthService, JwtHelperService, MessageService, TaskDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
